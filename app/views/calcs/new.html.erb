@@ -1,0 +1,12 @@
+<h1>数字をスペース区切りで2つ入力して下さい</h1>
+
+
+
+<%= form_with url: nums4_path, local: true do |f| %>
+
+  <%= f.text_field "input" %>
+  <%= f.submit "計算"%>
+
+<% end %>
+
+計算結果は<%= @result %>です

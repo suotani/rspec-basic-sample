@@ -9,7 +9,5 @@ RSpec.describe Todo, type: :model do
       it { is_expected.to validate_length_of(:text).is_at_most(20)}
     end
     
-    describe "#priority" do
-    end
   end
 end

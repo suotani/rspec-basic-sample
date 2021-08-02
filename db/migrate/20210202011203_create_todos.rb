@@ -3,6 +3,7 @@ class CreateTodos < ActiveRecord::Migration[5.2]
     create_table :todos do |t|
       t.string :text
       t.integer :priority
+      t.integer :user_id
 
       t.timestamps
     end

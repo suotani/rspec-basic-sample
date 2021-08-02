@@ -4,6 +4,8 @@ class TodosController < ApplicationController
 
   def index
     @todos = Todo.all
+    # @todo = Todo.new
+    # render :new
   end
 
   def show
@@ -18,6 +20,7 @@ class TodosController < ApplicationController
 
   def create
     @todo = Todo.new(todo_params)
+    @todo.user_id = current_user.id
     if @todo.save
       redirect_to @todo, notice: 'Todo was successfully created.'
     else

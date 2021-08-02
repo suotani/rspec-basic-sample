@@ -2,5 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :todos
   resources :users, only: [:index]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+ 
+  get "/nums", to: "calcs#new"
+  post "/nums", to: "calcs#exec"
+  post "/nums2", to: "calcs#exec2"
+  post "/nums3", to: "calcs#exec3"
+  post "/nums4", to: "calcs#exec4"
+
 end

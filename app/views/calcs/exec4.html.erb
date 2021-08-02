@@ -1,0 +1,13 @@
+<ul>
+
+<% @taxes.each do |tax| %>
+  <li><h2><%= @input * (1 + tax.rate / 100.0) %>円</h2></li>
+<% end %>
+
+
+<ul>
+f.select_tagを使ってTaxを選択
+選択肢た消費税と入力した値から税込値段
+
+「rails f.select_tag」
+form_with以外を使っている(form_tag, form_for)

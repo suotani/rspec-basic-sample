@@ -27,7 +27,7 @@ RSpec.describe TodosController, type: :request do
       end
 
       context "todos exist" do
-        let!(:todos){create_list(:todo, 3)}
+        let!(:todos){create_list(:todo, 3, user_id: user.id)}
         it "response success" do
           get "/todos"
           expect(response.status).to eq(200)
@@ -45,7 +45,7 @@ RSpec.describe TodosController, type: :request do
 
     describe "#show" do
       context "target exist" do
-        let!(:todo){create(:todo)}
+        let!(:todo){create(:todo, user_id: user.id)}
 
         it "response success" do
           get "/todos/#{todo.id}"
@@ -96,7 +96,7 @@ RSpec.describe TodosController, type: :request do
       end
 
       context "登録成功" do
-        let(:todo) {build(:todo)}
+        let(:todo) {build(:todo, user_id: user.id)}
         let(:params) { {todo: {text: todo.text, priority: todo.priority}} }
         let(:created_todo) { Todo.last}
 
@@ -116,7 +116,7 @@ RSpec.describe TodosController, type: :request do
 
     describe "#edit" do
       context "target exist" do
-        let!(:todo){create(:todo)}
+        let!(:todo){create(:todo, user_id: user.id)}
 
         it "response success" do
           get "/todos/#{todo.id}/edit"
@@ -141,7 +141,7 @@ RSpec.describe TodosController, type: :request do
 
     describe "#update" do
       context "更新失敗" do
-        let(:todo) {create(:todo)}
+        let(:todo) {create(:todo, user_id: user.id)}
         let(:params) { {todo: {text: "", priority: todo.priority}} }
 
         it "response success" do
@@ -156,7 +156,7 @@ RSpec.describe TodosController, type: :request do
       end
 
       context "更新成功" do
-        let(:todo) {create(:todo)}
+        let(:todo) {create(:todo, user_id: user.id)}
         let(:params) { {todo: {text: todo.text + " updated", priority: todo.priority}} }
 
         it "response redirect" do
@@ -169,7 +169,7 @@ RSpec.describe TodosController, type: :request do
 
     describe "#destroy" do
       context "削除成功" do
-        let!(:todo) {create(:todo)}
+        let!(:todo) {create(:todo, user_id: user.id)}
         it "delete success" do
           expect {
             delete "/todos/#{todo.id}"
