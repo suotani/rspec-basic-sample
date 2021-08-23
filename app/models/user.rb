@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :todos
+  has_many :likes
+  has_many :like_todos, through: :likes, source: :todo
+
 end

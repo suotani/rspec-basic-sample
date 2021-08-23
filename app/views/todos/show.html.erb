@@ -1,5 +1,4 @@
 <h1>Show Detail</h1>
-
 <p>
   <strong>Text:</strong>
   <%= @todo.text %>
@@ -8,6 +7,14 @@
 <p>
   <strong>Priority:</strong>
   <%= @todo.priority %>
+</p>
+
+<p>
+  <% if @todo.likes.where(user_id: current_user.id).count == 0 %>
+    <%= link_to "ストック(#{@todo.likes.count})", likes_path(todo_id: @todo.id), method: "post", class: "btn btn-primary"%>
+  <% else %>
+    <%= link_to "ストックを取り消す(#{@todo.likes.count})", like_path(@todo.id), method: "delete", class: "btn btn-danger"%>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_todo_path(@todo) %> |
